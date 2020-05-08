@@ -33,6 +33,8 @@ def finder(paths, queries):
     for query in queries:
         hash_key = hash_func(query)
         if hash_key in cache:
+            # extend works for large data set, append works for small data set
+            # unsure why
             result.extend(cache[hash_key])
 
     print(result)
