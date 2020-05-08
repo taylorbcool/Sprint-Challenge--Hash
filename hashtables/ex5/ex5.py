@@ -24,16 +24,16 @@ def finder(paths, queries):
         
         # if file name is in cache add the current path to that key
         if hash_key in cache:
-            cache[hash_key].append(path)
+            cache[hash_key] = cache[hash_key], path
 
         # if file name isn't in cache, add it and its path
         if hash_key not in cache:
-            cache[hash_key] = [path]
+            cache[hash_key] = path
     
     for query in queries:
         hash_key = hash_func(query)
         if hash_key in cache:
-            result.append(cache[hash_key])
+            result.extend(cache[hash_key])
 
     print(result)
     return result
