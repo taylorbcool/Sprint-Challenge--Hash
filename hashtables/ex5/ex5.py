@@ -35,7 +35,7 @@ def finder(paths, queries):
         if hash_key in cache:
             # extend works for large data set, append works for small data set
             # unsure why
-            result.extend(cache[hash_key])
+            result.append(cache[hash_key])
 
     print(result)
     return result
