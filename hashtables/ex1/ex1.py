@@ -1,5 +1,5 @@
 def get_indices_of_item_weights(weights, length, limit):
-    arr = dict()
+    cache = {}
     first = 0
     second = 0
 
@@ -7,17 +7,16 @@ def get_indices_of_item_weights(weights, length, limit):
         return None
 
     for i in range(length):
-        arr[weights[i]] = i
+        cache[weights[i]] = i
 
-    for weight in arr:
-        if limit - weight in arr:
-            first = arr[weight]
-            second = arr[limit - weight]
+    for weight in cache:
+        if limit - weight in cache:
+            first = cache[weight]
+            second = cache[limit - weight]
 
             # can't figure out how to do this
             if limit - weight == weight:
                 first = 1
                 second = 0
 
-    print(first, second)
     return (first, second)
